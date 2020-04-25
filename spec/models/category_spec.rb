@@ -16,4 +16,10 @@ RSpec.describe Category, type: :model do
   it '有効なファクトリを持つこと' do
     expect(category).to be_valid
   end
+
+  it 'カテゴリー名が空白であるときに無効なこと' do
+    category.name = ''
+    category.valid?
+    expect(category.errors.messages[:name]).to include('を入力してください')
+  end
 end
