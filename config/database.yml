@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: rails_5ch_production
-  username: rails_5ch
-  password: <%= ENV['RAILS_5CH_DATABASE_PASSWORD'] %>
