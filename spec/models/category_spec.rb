@@ -22,4 +22,11 @@ RSpec.describe Category, type: :model do
     category.valid?
     expect(category.errors.messages[:name]).to include('を入力してください')
   end
+
+  it 'カテゴリー名が最大文字数より長いときに無効なこと' do
+    max_word_count = 255
+    category.name = 'a' * (max_word_count + 1)
+    category.valid?
+    expect(category.errors.messages[:name]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end
