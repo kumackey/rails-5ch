@@ -4,7 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  default_username :string(255)      not null
-#  description      :string(255)
+#  description      :text(65535)
 #  name             :string(255)      not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

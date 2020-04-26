@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_04_26_004236) do
   create_table "boards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "default_username", null: false
-    t.string "description"
+    t.text "description"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
