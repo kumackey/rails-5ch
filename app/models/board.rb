@@ -21,4 +21,6 @@
 
 class Board < ApplicationRecord
   belongs_to :category
+
+  validates :description, length: { maximum: 500 }
 end

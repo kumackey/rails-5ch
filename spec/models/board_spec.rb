@@ -27,4 +27,16 @@ RSpec.describe Board, type: :model do
   it '有効なファクトリを持つこと' do
     expect(board).to be_valid
   end
+
+  it '詳細説明が無くとも有効なこと' do
+    board = build(:board, description: nil)
+    expect(board).to be_valid
+  end
+
+  it '詳細説明が最大文字数より長いときに無効なこと' do
+    max_word_count = 500
+    board = build(:board, description: 'a' * (max_word_count + 1))
+    board.valid?
+    expect(board.errors.messages[:description]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end
