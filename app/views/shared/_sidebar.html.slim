@@ -1,3 +1,5 @@
-nav.pt-3
+nav.mt-3.ml-3
   - @categories.each do |category|
     .text-danger = category.name
+    - category.boards.each do |board|
+      = board.name
