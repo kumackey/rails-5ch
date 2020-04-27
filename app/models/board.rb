@@ -23,4 +23,5 @@ class Board < ApplicationRecord
   belongs_to :category
 
   validates :description, length: { maximum: 500 }
+  validates :default_username, presence: true, length: { maximum: 20 }
 end
