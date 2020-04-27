@@ -36,4 +36,16 @@ RSpec.describe Thre, type: :model do
     thre.valid?
     expect(thre.errors.messages[:body]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  it 'タイトルが無いときに無効なこと' do
+    thre = build(:thre, title: nil)
+    expect(thre).not_to be_valid
+  end
+
+  it 'タイトルが最大文字数より長いときに無効なこと' do
+    max_word_count = 100
+    thre = build(:thre, title: 'a' * (max_word_count + 1))
+    thre.valid?
+    expect(thre.errors.messages[:title]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end
