@@ -5,7 +5,7 @@ class CreateThres < ActiveRecord::Migration[6.0]
       t.string :username, null: false
       t.string :useremail
       t.string :userid, null: false
-      t.text :body
+      t.text :body, null: false
       t.references :board, foreign_key: true
 
       t.timestamps

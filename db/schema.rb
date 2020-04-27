@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_025210) do
     t.string "username", null: false
     t.string "useremail"
     t.string "userid", null: false
-    t.text "body"
+    t.text "body", null: false
     t.bigint "board_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
