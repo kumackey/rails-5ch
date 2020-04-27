@@ -21,6 +21,12 @@
 #  fk_rails_...  (board_id => boards.id)
 #
 
-class Thre < ApplicationRecord
-  belongs_to :board
+require 'rails_helper'
+
+RSpec.describe Thre, type: :model do
+  let(:thre) { build(:thre) }
+
+  it '有効なファクトリを持つこと' do
+    expect(thre).to be_valid
+  end
 end
