@@ -1,2 +1,8 @@
 ja:
-  hello: "こんにちは"
+  activemodel:
+    attributes:
+      thread_form:
+        title: 'タイトル'
+        username: '名前'
+        useremail: 'Eメール'
+        body: '本文'
