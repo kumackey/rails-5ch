@@ -1,5 +1,5 @@
 = render 'shared/error_messages', object: @thread_form
-= form_with model: @thread_form, url: thres_path, local: true do |f|
+= form_with model: @thread_form, url: board_thres_path, local: true do |f|
   .form-group
     = f.label :username
     = f.text_field :username, class: 'form-control', placeholder: '名前を入力してください'

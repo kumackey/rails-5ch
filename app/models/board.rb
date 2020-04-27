@@ -21,6 +21,7 @@
 
 class Board < ApplicationRecord
   belongs_to :category
+  has_many :thres, dependent: :destroy
 
   validates :description, length: { maximum: 500 }
   validates :default_username, presence: true, length: { maximum: 20 }
