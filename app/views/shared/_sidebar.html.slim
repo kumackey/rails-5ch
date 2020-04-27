@@ -1,5 +1,8 @@
-nav.mt-3.ml-3
+nav.sidebar
   - @categories.each do |category|
-    .text-danger = category.name
-    - category.boards.each do |board|
-      = board.name
+    .text-danger.mt-3 = category.name
+    ul.nav.nav-pills.flex-column
+      - category.boards.each do |board|
+        li.nav-item
+          = link_to board, class: "nav-link #{active_in_sidebar(board.id)}" do
+            = board.name
