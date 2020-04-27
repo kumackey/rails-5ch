@@ -3,7 +3,7 @@
 # Table name: thres
 #
 #  id         :bigint           not null, primary key
-#  body       :text(65535)
+#  body       :text(65535)      not null
 #  title      :string(255)      not null
 #  useremail  :string(255)
 #  userid     :string(255)      not null
@@ -23,4 +23,6 @@
 
 class Thre < ApplicationRecord
   belongs_to :board
+
+  validates :body, presence: true, length: { maximum: 500 }
 end

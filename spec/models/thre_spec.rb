@@ -3,7 +3,7 @@
 # Table name: thres
 #
 #  id         :bigint           not null, primary key
-#  body       :text(65535)
+#  body       :text(65535)      not null
 #  title      :string(255)      not null
 #  useremail  :string(255)
 #  userid     :string(255)      not null
@@ -28,5 +28,12 @@ RSpec.describe Thre, type: :model do
 
   it '有効なファクトリを持つこと' do
     expect(thre).to be_valid
+  end
+
+  it '本文が最大文字数より長いときに無効なこと' do
+    max_word_count = 500
+    thre = build(:thre, body: 'a' * (max_word_count + 1))
+    thre.valid?
+    expect(thre.errors.messages[:body]).to include("は#{max_word_count}文字以内で入力してください")
   end
 end
