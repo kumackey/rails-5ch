@@ -1,21 +1,28 @@
 = render 'shared/site_heading'
 .container
   .row
-    .col-8.offset-2.thread-form
-      = render 'shared/error_messages', object: @thread_form
-      = form_with model: @thread_form, url: board_thres_path, local: true do |f|
-        .form-row
-          .form-group.col-6
-            = f.label :username
-            = f.text_field :username, class: 'form-control', placeholder: '名前を入力してください'
-          .form-group.col-6
-            = f.label :useremail
-            = f.text_field :useremail, class: 'form-control', placeholder: '（任意）メールアドレスを入力してください'
-        .form-group
-          = f.label :title
-          = f.text_field :title, class: 'form-control', placeholder: 'スレッドのタイトルを入力してください'
-        .form-group
-          = f.label :body
-          = f.text_area :body, class: 'form-control', placeholder: '本文を入力してください', rows: 5
-        = f.submit 'スレを立てる', class: 'btn btn-raised btn-success'
+    .col-8.offset-2
+      .thread-form
+        .mb-3
+          span.headline-board-name
+            = @board.name
+        = render 'shared/error_messages', object: @thread_form
+        = form_with model: @thread_form, url: board_thres_path, local: true do |f|
+          .form-row
+            .form-group.col-6
+              = f.label :username
+              = f.text_field :username, class: 'form-control', placeholder: '名前を入力してください'
+            .form-group.col-6
+              = f.label :useremail
+              = f.text_field :useremail, class: 'form-control', placeholder: '（任意）メールアドレスを入力してください'
+          .form-group
+            = f.label :title
+            = f.text_field :title, class: 'form-control', placeholder: 'スレッドのタイトルを入力してください'
+          .form-group
+            = f.label :body
+            = f.text_area :body, class: 'form-control', placeholder: '本文を入力してください', rows: 5
+          = f.submit 'スレを立てる', class: 'btn btn-raised btn-success'
+      .text-center.mt-3
+        = link_to board_path @board do
+          button.btn.btn-raised.btn-primary 掲示板に戻る
 
