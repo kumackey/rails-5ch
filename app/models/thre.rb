@@ -28,4 +28,8 @@ class Thre < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :useremail, length: { maximum: 255 }
   validates :username, presence: true, length: { maximum: 20 }
+  VALID_USER_ID_REGEX = /\A[a-z0-9]+\z/.freeze
+  validates :userid, presence: true,
+                     length: { maximum: 10, minimum: 10 },
+                     format: { with: VALID_USER_ID_REGEX }
 end

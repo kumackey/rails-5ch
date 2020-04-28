@@ -35,7 +35,7 @@ FactoryBot.define do
     end
     title { '●●●新商品の飲料を語るスレVol.38●●●' }
     useremail { 'sage' }
-    userid { 'exRDfqAf' }
+    userid { 'a1b2c3d4f5' }
     username { '内容量　774ml' }
     association :board
   end

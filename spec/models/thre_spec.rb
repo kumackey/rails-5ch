@@ -62,4 +62,42 @@ RSpec.describe Thre, type: :model do
     thre.valid?
     expect(thre.errors.messages[:useremail]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  describe 'ユーザIDが' do
+    user_id_word_count = 10
+    context "#{user_id_word_count - 1}文字のときに" do
+      let(:thre) { build(:thre, userid: 'a' * (user_id_word_count - 1)) }
+      it '無効なこと' do
+        thre.valid?
+        expect(thre.errors[:userid]).to include("は#{user_id_word_count}文字以上で入力してください")
+      end
+    end
+    context "#{user_id_word_count + 1}文字のときに" do
+      let(:thre) { build(:thre, userid: 'a' * (user_id_word_count + 1)) }
+      it '無効なこと' do
+        thre.valid?
+        expect(thre.errors[:userid]).to include("は#{user_id_word_count}文字以内で入力してください")
+      end
+    end
+    context "#{user_id_word_count}文字のときに" do
+      let(:thre) { build(:thre, userid: 'a' * user_id_word_count) }
+      it '有効なこと' do
+        expect(thre).to be_valid
+      end
+    end
+    context '大文字英字を含むときに' do
+      let(:thre) { build(:thre, userid: 'A' * user_id_word_count) }
+      it '無効なこと' do
+        thre.valid?
+        expect(thre.errors[:userid]).to include('は不正な値です')
+      end
+    end
+    context '存在しないときに' do
+      let(:thre) { build(:thre, userid: nil) }
+      it '無効なこと' do
+        thre.valid?
+        expect(thre.errors[:userid]).to include('は不正な値です')
+      end
+    end
+  end
 end
