@@ -9,6 +9,7 @@ html
     = javascript_pack_tag 'application'
   body
     .container-fuild
+      = render 'shared/flash_messages'
       .row
         .col-2.position-fixed
           = render 'shared/sidebar'

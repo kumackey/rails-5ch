@@ -8,8 +8,9 @@ class ThresController < ApplicationController
     @board = Board.find(params[:board_id])
     @thread_form = ThreadForm.new(thread_form_params.merge(board_id: @board.id, ip_address: request.remote_ip))
     if @thread_form.save
-      redirect_to @board
+      redirect_to @board, success: 'スレを立てました'
     else
+      flash.now[:danger] = 'スレを立てるのに失敗しました'
       render :new
     end
   end
