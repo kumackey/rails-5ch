@@ -48,4 +48,18 @@ RSpec.describe Thre, type: :model do
     thre.valid?
     expect(thre.errors.messages[:title]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  it 'ユーザの名前が最大文字数より長いときに無効なこと' do
+    max_word_count = 20
+    thre = build(:thre, username: 'a' * (max_word_count + 1))
+    thre.valid?
+    expect(thre.errors.messages[:username]).to include("は#{max_word_count}文字以内で入力してください")
+  end
+
+  it 'Eメールが最大文字数より長いときに無効なこと' do
+    max_word_count = 255
+    thre = build(:thre, useremail: 'a' * (max_word_count + 1))
+    thre.valid?
+    expect(thre.errors.messages[:useremail]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end

@@ -33,4 +33,11 @@ RSpec.describe ThreadForm, type: :model do
     thread_form.valid?
     expect(thread_form.errors.messages[:title]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  it 'Eメールが最大文字数より長いときに無効なこと' do
+    max_word_count = 255
+    thread_form = build(:thread_form, useremail: 'a' * (max_word_count + 1))
+    thread_form.valid?
+    expect(thread_form.errors.messages[:useremail]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end
