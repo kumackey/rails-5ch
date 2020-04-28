@@ -52,4 +52,28 @@ RSpec.describe ThreadForm, type: :model do
     thread_form.valid?
     expect(thread_form.errors.messages[:board_id]).to include('を入力してください')
   end
+
+  it '異なるIPアドレスからは異なるユーザIDを生成できること' do
+    thread_form = build(:thread_form, ip_address: '192.168.0.1')
+    other_thread_form = build(:thread_form, ip_address: '192.168.0.2')
+    expect(thread_form.generate_userid).not_to eq other_thread_form.generate_userid
+  end
+
+  it '期待する文字数のユーザIDを生成できること' do
+    word_count = 10
+    thread_form = build(:thread_form)
+    expect(thread_form.generate_userid.size).to eq word_count
+  end
+
+  it '有効なファクトリならばスレッドを立てられること' do
+    board = create(:board)
+    thread_form = build(:thread_form, board_id: board.id)
+    expect { thread_form.save }.to change { Thre.count }.by(1)
+  end
+
+  it '無効なファクトリであればスレッドを立てられないこと' do
+    board = create(:board)
+    thread_form = build(:thread_form, board_id: board.id, username: nil)
+    expect { thread_form.save }.to change { Thre.count }.by(0)
+  end
 end
