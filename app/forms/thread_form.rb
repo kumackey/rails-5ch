@@ -13,9 +13,11 @@ class ThreadForm
   attribute :ip_address, :string
 
   validates :username, presence: true, length: { maximum: 20 }
+  validates :useremail, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 500 }
   validates :title, presence: true, length: { maximum: 100 }
-  validates :useremail, length: { maximum: 255 }
+  validates :board_id, presence: true
+  validates :ip_address, presence: true
 
   def save
     if valid?

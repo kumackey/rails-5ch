@@ -13,5 +13,7 @@ FactoryBot.define do
     title { '●●●新商品の飲料を語るスレVol.38●●●' }
     useremail { 'sage' }
     username { '内容量　774ml' }
+    ip_address { '192.168.0.1' }
+    board_id { 1 }
   end
 end

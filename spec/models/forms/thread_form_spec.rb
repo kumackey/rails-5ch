@@ -40,4 +40,16 @@ RSpec.describe ThreadForm, type: :model do
     thread_form.valid?
     expect(thread_form.errors.messages[:useremail]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  it 'IPアドレスが無いときに無効なこと' do
+    thread_form = build(:thread_form, ip_address: nil)
+    thread_form.valid?
+    expect(thread_form.errors.messages[:ip_address]).to include('を入力してください')
+  end
+
+  it '掲示板に関する情報を持っていないときに無効なこと' do
+    thread_form = build(:thread_form, board_id: nil)
+    thread_form.valid?
+    expect(thread_form.errors.messages[:board_id]).to include('を入力してください')
+  end
 end
