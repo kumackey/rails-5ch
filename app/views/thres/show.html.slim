@@ -1,5 +1,6 @@
 h2 = @thre.title
-hr
+= link_to board_path @thre.board do
+  button.btn.btn-raised.btn-primary.d-block.mb-3 掲示板に戻る
 .d-inline
   | 1
 .username-in-thread
@@ -11,4 +12,3 @@ hr
   = @thre.userid
 .mt-3
   = @thre.body
-hr
