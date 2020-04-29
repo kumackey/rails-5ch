@@ -1,5 +1,8 @@
 .d-inline
-  | 1
+  - if thre.class == Reply
+    = thre_counter + 2
+  - else
+    | 1
 .username-in-thread
   - if thre.useremail.present?
     = mail_to thre.useremail 
