@@ -1,7 +1,11 @@
 .d-inline
   | 1
 .username-in-thread
-  = thre.username
+  - if thre.useremail.present?
+    = mail_to thre.useremail 
+      = thre.username
+  - else
+    = thre.username
 .ml-3.d-inline
   = l thre.created_at
 .ml-3.d-inline 
