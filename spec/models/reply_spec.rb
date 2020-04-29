@@ -20,6 +20,12 @@
 #  fk_rails_...  (thre_id => thres.id)
 #
 
-class Reply < ApplicationRecord
-  belongs_to :thre
+require 'rails_helper'
+
+RSpec.describe Reply, type: :model do
+  let(:reply) { build(:reply) }
+
+  it '有効なファクトリを持つこと' do
+    expect(reply).to be_valid
+  end
 end

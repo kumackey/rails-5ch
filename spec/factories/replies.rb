@@ -20,6 +20,12 @@
 #  fk_rails_...  (thre_id => thres.id)
 #
 
-class Reply < ApplicationRecord
-  belongs_to :thre
+FactoryBot.define do
+  factory :reply do
+    body { '2げと' }
+    useremail { 'sage' }
+    userid { '987abc1234' }
+    username { '内容量　774ml' }
+    association :thre
+  end
 end
