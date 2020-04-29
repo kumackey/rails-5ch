@@ -12,4 +12,4 @@
   | ID: 
   = thre.userid
 .mt-3
-  = simple_format thre.body
+  = raw Rinku.auto_link(simple_format(thre.body))
