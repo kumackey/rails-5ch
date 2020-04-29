@@ -62,6 +62,29 @@ threads = [
     username: '5ちゃんねるからVIPがお送りします',
     board_name: 'Ruby',
     userid: 'd123456789'
+  },
+  {
+    body: '入門書買いたいんだけど
+    ・辞書みたいに分厚くない
+    ・カラー刷り
+    ・Macでの環境構築から解説している
+    
+    以上に当てはまるおすすめの入門書紹介してください！
+    知識はProgateでRubyとRailsのレッスン一周した程度ですw',
+    title: 'Ruby on Rails詳しい人来てください',
+    username: '5ちゃんねるからVIPがお送りします',
+    board_name: 'Ruby',
+    userid: '1023456789'
+  },
+  {
+    body: 'プログラミング言語 Rubyについての、初心者向けスレです。質問・要望・雑談などをどうぞ
+
+    質問するときは、OSやRubyのバージョン、エラーメッセージを書いて下さい。
+    Ruby on Rails については、WEBプログラミング板で',
+    title: 'Ruby 初心者スレッド Part 65',
+    username: 'name = nil',
+    board_name: 'Ruby',
+    userid: '1a23456789'
   }
 ]
 
