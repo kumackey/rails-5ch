@@ -33,4 +33,12 @@ RSpec.describe 'Thres', type: :request do
     expect(response).to have_http_status(200)
     expect(response.body).to include('スレを立てるのに失敗しました')
   end
+
+  it 'スレッド詳細画面の取得に成功すること' do
+    thread_title = 'ジョージア・マックスコーヒーpart5'
+    thre = create(:thre, title: thread_title)
+    get "/thres/#{thre.id}"
+    expect(response).to have_http_status(200)
+    expect(response.body).to include(thread_title)
+  end
 end

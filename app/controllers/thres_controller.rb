@@ -15,6 +15,10 @@ class ThresController < ApplicationController
     end
   end
 
+  def show
+    @thre = Thre.find(params[:id])
+  end
+
   private
 
   def thread_form_params

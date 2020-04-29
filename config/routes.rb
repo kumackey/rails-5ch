@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :boards, only: %i[show] do
     resources :thres, only: %i[new create]
   end
+  resources :thres, only: %i[show]
 end
