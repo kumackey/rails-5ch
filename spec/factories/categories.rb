@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :category do
-    name { '地震' }
+    name { '食文化' }
   end
 end

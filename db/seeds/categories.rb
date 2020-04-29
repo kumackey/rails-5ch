@@ -1,6 +1,6 @@
 puts 'Start inserting seed "categories" ...'
 
-category_names = %w[ニュース プログラミング スポーツ 学問 食文化]
+category_names = %w[プログラミング ニュース スポーツ 学問 食文化]
 categories = category_names.map { |category_name| { name: category_name } }
 
 Category.transaction do

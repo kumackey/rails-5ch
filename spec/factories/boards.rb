@@ -21,9 +21,9 @@
 
 FactoryBot.define do
   factory :board do
-    name { '地震速報' }
-    default_username { '名無しさん' }
-    description { 'なまず' }
+    name { 'ソフトドリンク' }
+    default_username { '内容量　774ml' }
+    description { '◆この板は、アルコール類以外の飲み物に関する話題を扱う板です。' }
     association :category
   end
 end

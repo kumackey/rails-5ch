@@ -39,4 +39,11 @@ RSpec.describe Board, type: :model do
     board.valid?
     expect(board.errors.messages[:description]).to include("は#{max_word_count}文字以内で入力してください")
   end
+
+  it 'デフォルトユーザ名が最大文字数より長いときに無効なこと' do
+    max_word_count = 20
+    board = build(:board, default_username: 'a' * (max_word_count + 1))
+    board.valid?
+    expect(board.errors.messages[:default_username]).to include("は#{max_word_count}文字以内で入力してください")
+  end
 end
