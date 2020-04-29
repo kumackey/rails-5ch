@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :boards, only: %i[show] do
     resources :thres, only: %i[new create]
   end
-  resources :thres, only: %i[show]
+  resources :thres, only: %i[show] do
+    resources :replies, only: %i[create]
+  end
 end

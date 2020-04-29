@@ -23,6 +23,7 @@
 
 class Thre < ApplicationRecord
   belongs_to :board
+  has_many :replies, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 500 }
   validates :title, presence: true, length: { maximum: 100 }

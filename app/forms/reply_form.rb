@@ -17,6 +17,25 @@ class ReplyForm
   validates :thre_id, presence: true
   validates :ip_address, presence: true
 
+  def save
+    if valid?
+      @thre = Thre.find(thre_id)
+      @reply = @thre.replies.build(
+        body: body,
+        useremail: useremail,
+        userid: generate_userid,
+        username: username
+      )
+      if (@reply = @reply.save)
+        @reply
+      else
+        false
+      end
+    else
+      false
+    end
+  end
+
   def generate_userid
     time = Time.current
     origin_stirng = time.day.to_s + time.month.to_s + time.year.to_s + ip_address

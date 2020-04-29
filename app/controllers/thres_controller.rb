@@ -17,6 +17,7 @@ class ThresController < ApplicationController
 
   def show
     @thre = Thre.find(params[:id])
+    @reply_form = ReplyForm.new(username: @thre.board.default_username)
   end
 
   private
