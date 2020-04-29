@@ -21,3 +21,4 @@ h2 = @thre.title
     button.btn.btn-raised.btn-primary 掲示板に戻る
 hr
 = render @thre
+= render partial: 'thres/thre', collection: @replies, as: :thre
