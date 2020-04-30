@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+http://18.179.20.78/
 
-Things you may want to cover:
+## 基本的な情報
 
-* Ruby version
+```
+$ ruby -v
+ruby 2.6.5
 
-* System dependencies
+$ rails -v
+Rails 6.0.2.2
 
-* Configuration
+$ nginx -v
+nginx version: nginx/1.12.2
 
-* Database creation
+$ mysql --version
+mysql  Ver 14.14 Distrib 5.7.29, for Linux (x86_64) using  EditLine wrapper
 
-* Database initialization
+$ yarn -v
+1.22.4
+```
 
-* How to run the test suite
+## インフラ
 
-* Services (job queues, cache servers, search engines, etc.)
+VPC / EC2
 
-* Deployment instructions
+## 開発環境の確認方法
 
-* ...
+```
+$ docker-compose build
+$ docker-compose rub web db:create db:migrate db:seed
+$ docker-compose up
+```
+
+## 工夫した部分
+
+- userID生成機能
+- form objectによるvalidation(UIも含め)
+- 検索機能
+- テストを堅牢に(50以上)
+
+## 改善点
+
+- 要件を勘違いしていて、ユーザ情報・カテゴリ機能は要件と異なってしまっています(致命的なミスで申し訳ないです)。
+- かなり迷いましたが、user情報はthresテーブル、repliesテーブルから分離した方が良かったと思われます。あるいはポリモーフィック関連。
+- 勢い機能、sage機能など、他にも付けられそうな機能はたくさんありましたが、私のスピードが足りなかったです。
+
