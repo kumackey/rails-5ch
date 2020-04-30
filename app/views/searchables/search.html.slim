@@ -1,6 +1,7 @@
 .text-center.mt-5
   h3 スレッド検索結果
 = render partial: 'thres/thre_and_heading', collection: @thres, as: :thre
+= paginate @thres, params_name: 'thres_page'
 hr
 .text-center.mt-5
   h3 レス検索結果
@@ -19,3 +20,4 @@ hr
     | ID: 
     = reply.userid
   p.ml-3 = reply.body.truncate(20)
+= paginate @replies, params_name: 'replies_page'
