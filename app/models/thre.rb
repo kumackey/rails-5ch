@@ -33,4 +33,6 @@ class Thre < ApplicationRecord
   validates :userid, presence: true,
                      length: { maximum: 10, minimum: 10 },
                      format: { with: VALID_USER_ID_REGEX }
+
+  scope :body_or_title_contain, ->(keyword) { where('(body LIKE ?) OR (title LIKE ?)', "%#{keyword}%", "%#{keyword}%").distinct }
 end
