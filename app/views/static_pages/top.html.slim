@@ -1,6 +1,26 @@
-.text-center.mt-5
-  h1 5ch
+= render 'shared/site_heading'
+.text-center
   .lead.mt-3
     |「プログラミング」から「今朝のおかず」までを手広くカバーする掲示板群
     p 『5ch』へようこそ！
   = image_tag 'tsubo.png', size: '250'
+hr
+h5.text-center
+  | 最新のスレ
+= render 'thres/thre_and_heading', thre: @thre
+h5.text-center.mt-5
+  | 最新のレス
+= link_to @reply.thre do
+  h5 = @reply.thre.title
+.username-in-thread
+  - if @reply.useremail.present?
+    = mail_to @reply.useremail 
+      = @reply.username
+  - else
+    = @reply.username
+.ml-3.d-inline
+  = l @reply.created_at
+.ml-3.d-inline 
+  | ID: 
+  = @reply.userid
+p.ml-3 = @reply.body.truncate(20)

@@ -1,4 +1,7 @@
 nav.sidebar
+  = form_with model: @search_form, url: search_path, scope: :q, class: 'form-inline', method: :get, local: true do |f|
+    = f.search_field :keyword, class: 'form-control mr-sm-2', placeholder: 'キーワード'
+    = f.submit '検索する', class: 'btn btn-success mt-1'
   - @categories.each do |category|
     .text-danger.mt-3 = category.name
     ul.nav.nav-pills.flex-column
