@@ -7,6 +7,7 @@
   .text-center.mt-3
     = link_to new_board_thre_path @board do
       button.btn.btn-raised.btn-success 新しいスレを立てる
+hr
 = render partial: 'thres/thre_and_heading', collection: @thres, as: :thre
 hr
 = paginate @thres
