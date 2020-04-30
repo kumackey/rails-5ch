@@ -11,13 +11,20 @@ RSpec.describe SearchForm, type: :model do
 
   it 'スレッドの本文を検索できること' do
     part_of_thread_body = 'ペプシ派もコカコーラ派も仲良くしましょう！'
-    thread_body = "コーラの美味しさについて語りあいましょう！
-    #{part_of_thread_body}
-    ちなみに私はコカコーラ派です！！"
+    thread_body = "コーラの美味しさについて語りあいましょう！#{part_of_thread_body}ちなみに私はコカコーラ派です！！"
     create(:thre, body: thread_body)
     search_form = SearchForm.new(keyword: part_of_thread_body)
     thre = search_form.search_threads.take
     expect(thre.body).to eq thread_body
+  end
+
+  it 'レスの本文を検索できること' do
+    part_of_reply_body = 'ドクターグリップ'
+    reply_body = "#{part_of_reply_body}が最強"
+    create(:reply, body: reply_body)
+    search_form = SearchForm.new(keyword: part_of_reply_body)
+    reply = search_form.search_replies.take
+    expect(reply.body).to eq reply_body
   end
 
   it '無意味な文字では検索結果が出ないこと' do

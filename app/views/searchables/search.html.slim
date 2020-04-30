@@ -1,3 +1,21 @@
 .text-center.mt-5
-  h3 検索結果
+  h3 スレッド検索結果
 = render partial: 'thres/thre_and_heading', collection: @thres, as: :thre
+hr
+.text-center.mt-5
+  h3 レス検索結果
+- @replies.each do |reply|
+  = link_to reply.thre do
+    h6 = reply.thre.title
+  .username-in-thread
+    - if reply.useremail.present?
+      = mail_to reply.useremail 
+        = reply.username
+    - else
+      = reply.username
+  .ml-3.d-inline
+    = l reply.created_at
+  .ml-3.d-inline 
+    | ID: 
+    = reply.userid
+  p.ml-3 = reply.body.truncate(20)
